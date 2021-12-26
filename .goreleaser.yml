@@ -12,15 +12,9 @@ builds:
     flags:
       - -trimpath
     goos:
-      - darwin
-      - freebsd
       - linux
-      - windows
     goarch:
-      - '386'
       - amd64
-      - arm
-      - arm64
     ignore:
       - goarch: arm
         goos: windows
@@ -31,6 +25,8 @@ builds:
     ldflags:
       - -s -w -X internal/provider.Version={{.Version}}
     mod_timestamp: '{{ .CommitTimestamp }}'
+announce:
+  skip: true
 checksum:
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
   algorithm: sha256
